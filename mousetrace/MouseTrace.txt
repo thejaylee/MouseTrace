@@ -1,0 +1,80 @@
+MouseTrace
+Jason L.
+j[at]jlee[dot]me
+
+Description
+============
+This program displays mouse motion data captured via raw input from windows.
+The mouse data displayed is raw, therefore unfiltered. This program also
+provides some functionality to save data and graphs.
+
+Usage
+======
+The top text displays the sample frequency averaged from the ten most recent
+samples. The list view displays the last 250 motion samples and their delta
+times (in ms) from the previous sample. The next list displays the unique 
+absolute motion values.
+
+The [Record] toggle button starts and stops recording of the x, y, and delta
+time values to Comma-Separated Value (csv) file.
+
+The [Save Graphs] button saves the graphs as bitmaps. Any previous files are
+over-written.
+
+The target graph displays the instantaneous mouse magnitude. This graph is
+auto-scaling. The 'Tracers' slider controls the number of tracers to show,
+from 1 to 50.
+
+The histograms graph the motion values. The X-axis is the magnitude of
+motion, and the Y-axis is the number of motions. The left side is near zero
+movement where as the right side is the largest movements. The green bars
+represent positive values, and red bars negative. The top graph is X-axis
+(left-right) mouse motion and the bottom graph is Y-axis (forward-back) mouse
+motion. The histograms are generated from the last 500 motion samples, and,
+are auto-scaling.
+
+Notes
+======
+When the program is run, move your mouse as fast as posible so that the graphs
+are scaled to maximum magnitude.
+
+The raw input API is only available on WinXP or greater, so 98/ME/2K won't
+work.
+
+Thanks
+=======
+sxd - for helping me test
+google - for helping answer so many questions
+
+Version History
+================
+0.2.4
+-Increased max tracers from 50 to 100
+0.2.3
+-Fixed a bug in the bitmap writing.
+0.2.2
+-Fixed a bug that detects motion.
+-Added tracers to the target graph.
+-Added ability to save graphs.
+-Added ability to save values.
+0.2.1
+-Double buffered the histograms.
+-Changed the listview back to a regular list due to resource consumption.
+-Changed some fonts.
+0.2.0
+-Cleaned up and organized some code.
+-Added CSV file recording.
+0.1.6
+-Added unique value list.
+0.1.5
+-Fixed the Frequency/Hertz computations.
+0.1.4
+-Changed the x,y listbox to an x,y,ms list view.
+0.1.3
+-Optimized some drawing code.
+0.1.2
+-Fixed some GDI leaks.
+0.1.1
+-Still learning GDI.
+0.1.0
+-Mostly alpha.

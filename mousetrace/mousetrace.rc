@@ -1,0 +1,124 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_MAIN DIALOGEX 0, 0, 538, 215
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "MouseTrace   by Jason L."
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_XGRAPH,"Static",SS_WHITEFRAME | SS_CENTERIMAGE,333,6,200,100
+    CONTROL         "",IDC_YGRAPH,"Static",SS_WHITEFRAME,333,110,200,100
+    CONTROL         "Hz",IDST_FREQUENCY,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,90,8,30,8,WS_EX_TRANSPARENT
+    CONTROL         "Record",IDCB_RECORD,"Button",BS_AUTOCHECKBOX | BS_VCENTER | BS_PUSHLIKE | BS_NOTIFY | BS_FLAT,123,6,30,12
+    LISTBOX         IDLS_VALUES,90,18,30,192,LBS_SORT | LBS_NOINTEGRALHEIGHT | LBS_NOSEL | NOT WS_BORDER | WS_VSCROLL,WS_EX_STATICEDGE
+    LISTBOX         IDLS_RAW,3,6,84,204,LBS_NOINTEGRALHEIGHT | LBS_NOSEL | NOT WS_BORDER | WS_VSCROLL | WS_TABSTOP,WS_EX_STATICEDGE
+    CONTROL         "",IDSL_TRACERS,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,270,7,60,12
+    CONTROL         "Tracers",IDST_TRACERS,"Static",SS_LEFTNOWORDWRAP | SS_CENTERIMAGE | WS_GROUP,246,6,24,12
+    CONTROL         "",IDC_TARGETGRAPH,"Static",SS_WHITEFRAME,123,20,206,190
+    PUSHBUTTON      "Graphs",IDB_SAVEGRAPHS,178,6,30,12,BS_VCENTER | BS_NOTIFY | BS_FLAT
+    PUSHBUTTON      "Values",IDB_SAVEVALUES,210,6,30,12,BS_FLAT
+    LTEXT           "Save:",IDST_SAVE,158,6,18,12,SS_CENTERIMAGE
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_MAIN, DIALOG
+    BEGIN
+        RIGHTMARGIN, 536
+        BOTTOMMARGIN, 214
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON                ICON                    "icon.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_ACCEL ACCELERATORS
+BEGIN
+    "S",            IDA_SAVEGRAPHS,         VIRTKEY, CONTROL, NOINVERT
+    "R",            IDA_TOGGLERECORD,       VIRTKEY, CONTROL, NOINVERT
+END
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
