@@ -250,7 +250,7 @@ void toggleRecordValues( void ) {
 }
 
 void saveValueList( void ) {
-	int c, vals;
+	LRESULT c, vals;
 	FILE *fp = NULL;
 	char strbuf[16];
 	char *ch;
@@ -261,7 +261,7 @@ void saveValueList( void ) {
 		return;
 	}
 
-	(LRESULT) vals = SendDlgItemMessage(hDialog, IDLS_VALUES, LB_GETCOUNT, 0, 0);
+	vals = SendDlgItemMessage(hDialog, IDLS_VALUES, LB_GETCOUNT, 0, 0);
 
 	for ( c=0; c<vals; c++ ) {
 		SendDlgItemMessage(hDialog, IDLS_VALUES, LB_GETTEXT, c, (LPARAM)strbuf);
