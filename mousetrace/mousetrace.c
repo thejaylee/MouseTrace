@@ -80,7 +80,7 @@ void processRawInput( LPRAWINPUT ri ) {
 		mHertz = (mHertz + 1) % HERTZ_SAMPLES; //update cyclic index
 		QueryPerformanceCounter(&now);
 		secs = (float)(now.QuadPart - past.QuadPart) / freq.QuadPart;
-		QueryPerformanceCounter(&past);
+		past = now;
 		hertz[mHertz] = 1.0f / secs;
 
 		if ( recfile != NULL )
