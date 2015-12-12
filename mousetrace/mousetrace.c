@@ -80,7 +80,7 @@ void processRawInput( LPRAWINPUT ri ) {
 		mHertz = (mHertz + 1) % HERTZ_SAMPLES; //update cyclic index
 		QueryPerformanceCounter(&now);
 		secs = (float)(now.QuadPart - past.QuadPart) / freq.QuadPart;
-		QueryPerformanceCounter(&past);
+		past = now;
 		hertz[mHertz] = 1.0f / secs;
 
 		if ( recfile != NULL )
@@ -250,7 +250,7 @@ void toggleRecordValues( void ) {
 }
 
 void saveValueList( void ) {
-	int c, vals;
+	LRESULT c, vals;
 	FILE *fp = NULL;
 	char strbuf[16];
 	char *ch;
@@ -261,7 +261,7 @@ void saveValueList( void ) {
 		return;
 	}
 
-	(LRESULT) vals = SendDlgItemMessage(hDialog, IDLS_VALUES, LB_GETCOUNT, 0, 0);
+	vals = SendDlgItemMessage(hDialog, IDLS_VALUES, LB_GETCOUNT, 0, 0);
 
 	for ( c=0; c<vals; c++ ) {
 		SendDlgItemMessage(hDialog, IDLS_VALUES, LB_GETTEXT, c, (LPARAM)strbuf);
@@ -282,10 +282,11 @@ void cleanup( void ) {
 }
 
 INT_PTR CALLBACK DialogProc( HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam ) {
-	unsigned long sz;
+	UINT sz;
 	//LRESULT res;
-	LPRAWINPUT ri;
 
+	static LPRAWINPUT ri = NULL;
+	static UINT ri_size = 0;
 	static int c=0;
 	char dbuf[32];
 
@@ -332,11 +333,15 @@ INT_PTR CALLBACK DialogProc( HWND hwnd, UINT message, WPARAM wParam, LPARAM lPar
 			DestroyWindow(hwnd);
 			return TRUE;
 		case WM_DESTROY:
+			free(ri);
 			PostQuitMessage(0);
 			return TRUE;
 		case WM_INPUT:
 			GetRawInputData((HRAWINPUT)lParam, RID_INPUT, NULL, &sz, sizeof(RAWINPUTHEADER));
-			ri = malloc(sz);
+			if (sz > ri_size) {
+				ri_size = sz;
+				ri = realloc(ri, ri_size);
+			}
 			GetRawInputData((HRAWINPUT)lParam, RID_INPUT, (LPVOID)ri, &sz, sizeof(RAWINPUTHEADER));
 
 			sprintf_s(dbuf, sizeof(dbuf), "%d\n", c++);
@@ -344,7 +349,7 @@ INT_PTR CALLBACK DialogProc( HWND hwnd, UINT message, WPARAM wParam, LPARAM lPar
 
 			if (ri->header.dwType == RIM_TYPEMOUSE)
 				processRawInput(ri);
-			free(ri);
+
 			return TRUE;
 		/*default:
 			return DefDlgProc(hwnd, message, wParam, lParam);*/

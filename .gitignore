@@ -1,0 +1,6 @@
+*.sdf
+*.opensdf
+mousetrace/Win32/Release/
+mousetrace/Win32/Debug/
+mousetrace/x64/Release/
+mousetrace/x64/Debug/
